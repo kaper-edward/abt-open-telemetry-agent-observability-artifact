@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "langgraph-support-observability"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.28,<1",
+  "langchain-core>=1,<2",
+  "langchain-ollama>=1,<2",
+  "langgraph>=1,<2",
+  "openinference-instrumentation-langchain>=0.1,<1",
+  "openinference-semantic-conventions>=0.1,<1",
+  "opentelemetry-exporter-otlp-proto-http>=1.39,<2",
+  "opentelemetry-sdk>=1.39,<2",
+  "pydantic>=2.10,<3",
+  "typer>=0.16,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8"]
+
+[project.scripts]
+support-application = "experiments.support_application.__main__:app"
+agent-trace-experiments = "experiments.agent_trace_experiments.__main__:app"
+
+[tool.hatch.build]
+dev-mode-exact = true
+
+[tool.hatch.build.targets.wheel]
+only-include = [
+  "src/aof",
+  "src/experiments/agent_trace_experiments",
+  "src/experiments/autogen_group_chat_abt",
+  "src/experiments/autogen_group_chat_base",
+  "src/experiments/autogen_group_chat_oi",
+  "src/experiments/crewai_book_flow_abt",
+  "src/experiments/crewai_book_flow_base",
+  "src/experiments/crewai_book_flow_oi",
+  "src/experiments/customer_support_agent_abt",
+  "src/experiments/customer_support_agent_oi",
+  "src/experiments/open_deep_research_base",
+  "src/experiments/open_deep_research_node_abt",
+  "src/experiments/open_deep_research_node_oi",
+  "src/experiments/support_agent",
+  "src/experiments/support_application",
+  "src/experiments/swe_agent_core_abt",
+  "src/experiments/swe_agent_core_base",
+  "src/experiments/swe_agent_core_oi",
+]
+
+[tool.hatch.build.targets.wheel.sources]
+"src" = ""
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+  "characterization: freezes public behavior during refactoring",
+  "integration: requires local services",
+  "ollama: requires Ollama and configured models",
+]
+addopts = "-m 'not integration'"

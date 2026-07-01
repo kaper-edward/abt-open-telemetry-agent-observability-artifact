@@ -1,0 +1,13 @@
+editables==0.6
+httpx==0.28.1
+langchain-core==1.4.6
+langchain-ollama==1.1.0
+langgraph==1.2.4
+openinference-instrumentation-langchain==0.1.66
+openinference-semantic-conventions==0.1.30
+opentelemetry-exporter-otlp-proto-http==1.42.1
+opentelemetry-sdk==1.42.1
+pydantic==2.12.5
+pytest==9.0.3
+pytest-cov==7.1.0
+typer==0.23.1

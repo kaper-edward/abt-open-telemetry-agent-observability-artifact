@@ -1,0 +1,31 @@
+.worktrees/
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+.env
+.phoenix/
+reports/
+dist/
+.tmp/
+tmp/
+output/
+.vs/
+*.pyc
+src/experiments/_evaluation_resources/target_agent_references/**/.git/
+
+# Local paper submission/build artifacts that are not part of the public artifact package.
+docs/abt-paper/정보과학회_*
+docs/abt-paper/ABT-논문-그림.pptx
+docs/abt-paper/ABT-Framework.eapx
+docs/abt-paper/abt-short-paper.md
+docs/abt-paper/TODO.md
+docs/abt-paper/5-comparison-with-openinference/5-6-discussion-and-threats/section-5-6-action-subtype-value-coverage-note.md
+
+# Local research notes collected during drafting.
+docs/OpenInference-*.md
+docs/OpenInference-*.py
+docs/OpenTelemetry-*.md
+docs/Phoenix-*.md
+docs/high-level-telemetry-openinference-requirements.md
+docs/superpowers/
